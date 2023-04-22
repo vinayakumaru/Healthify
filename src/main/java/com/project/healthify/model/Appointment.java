@@ -12,7 +12,7 @@ public class Appointment implements Serializable {
 
     @Id
     @GeneratedValue(strategy = GenerationType.SEQUENCE)
-    private Long appointmentID;
+    private String appointmentID;
     private String userID;
     private String doctorID;
     private String status;
@@ -26,11 +26,11 @@ public class Appointment implements Serializable {
         this.date = date;
     }
 
-    public long getAppointmentID() {
+    public String getAppointmentID() {
         return appointmentID;
     }
 
-    public void setAppointmentID(long appointmentID) {
+    public void setAppointmentID(String appointmentID) {
         this.appointmentID = appointmentID;
     }
 

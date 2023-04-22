@@ -2,6 +2,7 @@ package com.project.healthify.controller;
 
 import com.project.healthify.model.User;
 import com.project.healthify.repository.UserRepository;
+import com.project.healthify.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -14,12 +15,12 @@ import java.util.Optional;
 public class UserController {
 
     @Autowired
-    UserRepository userRepository;
+    UserService userService;
 
     @PostMapping("/add")
     public ResponseEntity<String> createUser(@RequestBody User user) {
         try {
-            userRepository.save(user);
+            userService.save(user);
             return ResponseEntity.ok("User created successfully");
         } catch (Exception e) {
             return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body("Error creating user: " + e.getMessage());
@@ -28,9 +29,9 @@ public class UserController {
 
     @PutMapping("/update/{id}")
     public ResponseEntity<String> updateUser(@PathVariable String id, @RequestBody User user) {
-        Optional<User> optionalUser = userRepository.findById(id);
+        Optional<User> optionalUser = userService.get(id);
         if (optionalUser.isPresent()) {
-            userRepository.save(user);
+            userService.save(user);
             return ResponseEntity.ok("User updated successfully");
         } else {
             return ResponseEntity.status(HttpStatus.NOT_FOUND).body("User with ID " + id + " not found");
