@@ -5,10 +5,11 @@ import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 
+import java.io.Serializable;
 import java.util.Date;
 
 @Entity
-public class Prescription {
+public class Prescription implements Serializable {
     @Id
     @GeneratedValue(strategy = GenerationType.SEQUENCE)
     private String PrescriptionId;

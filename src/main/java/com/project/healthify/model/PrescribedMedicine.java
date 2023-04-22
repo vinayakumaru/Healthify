@@ -5,11 +5,14 @@ import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 
+import java.io.Serializable;
+
 @Entity
-public class PrescribedMedicine {
+public class PrescribedMedicine implements Serializable {
     @Id
+    @GeneratedValue(strategy = GenerationType.SEQUENCE)
+    private String PrescribedMedicineId;
     private String PrescriptionId;
-    @Id
     private String MedicineId;
     private int Quantity;
     private String Dosage;

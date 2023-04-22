@@ -1,7 +1,5 @@
 package com.project.healthify.controller;
-
 import com.project.healthify.model.User;
-import com.project.healthify.repository.UserRepository;
 import com.project.healthify.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;

@@ -1,4 +1,4 @@
-package com.project.healthify.implementation;
+package com.project.healthify.service.implementation;
 
 import com.project.healthify.model.Appointment;
 import com.project.healthify.repository.AppointmentRepository;
@@ -13,39 +13,39 @@ import java.util.Optional;
 public class AppointmentServiceImplementation implements AppointmentService {
 
     @Autowired
-    AppointmentRepository appointmentRepository;
+    AppointmentRepository repository;
     @Override
     public List<Appointment> getAll() {
-        return appointmentRepository.findAll();
+        return repository.findAll();
     }
 
     @Override
     public Optional<Appointment> get(String id) {
-        return appointmentRepository.findById(id);
+        return repository.findById(id);
     }
 
     @Override
     public void create(Appointment entity) {
-        appointmentRepository.save(entity);
+        repository.save(entity);
     }
 
     @Override
     public void save(Appointment entity) {
-        appointmentRepository.save(entity);
+        repository.save(entity);
     }
 
     @Override
     public void delete(String id) {
-        appointmentRepository.deleteById(id);
+        repository.deleteById(id);
     }
 
     @Override
     public List<Appointment> getDoctorAppointment(String id) {
-        return appointmentRepository.findByDoctorId(id);
+        return repository.findByDoctorId(id);
     }
 
     @Override
     public List<Appointment> getUserAppointment(String id) {
-        return appointmentRepository.findByUserID(id);
+        return repository.findByUserID(id);
     }
 }

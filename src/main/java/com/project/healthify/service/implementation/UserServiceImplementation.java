@@ -1,4 +1,4 @@
-package com.project.healthify.implementation;
+package com.project.healthify.service.implementation;
 
 import com.project.healthify.model.User;
 import com.project.healthify.repository.UserRepository;
@@ -13,30 +13,30 @@ import java.util.Optional;
 public class UserServiceImplementation implements UserService {
 
     @Autowired
-    UserRepository userRepository;
+    UserRepository repository;
     @Override
     public List<User> getAll() {
-        return userRepository.findAll();
+        return repository.findAll();
     }
 
     @Override
     public Optional<User> get(String id) {
-        return userRepository.findById(id);
+        return repository.findById(id);
     }
 
     @Override
     public void create(User entity) {
-        userRepository.save(entity);
+        repository.save(entity);
     }
 
     @Override
     public void save(User entity) {
-        userRepository.save(entity);
+        repository.save(entity);
     }
 
     @Override
     public void delete(String id) {
-        userRepository.deleteById(id);
+        repository.deleteById(id);
     }
 
 }
