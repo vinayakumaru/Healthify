@@ -30,6 +30,7 @@ public class UserController {
         Optional<User> optionalUser = userService.get(id);
         if (optionalUser.isPresent()) {
             userService.save(user);
+
             return ResponseEntity.ok("User updated successfully");
         } else {
             return ResponseEntity.status(HttpStatus.NOT_FOUND).body("User with ID " + id + " not found");
