@@ -1,6 +1,5 @@
 package com.project.healthify.controller;
 
-import com.fasterxml.jackson.databind.JsonNode;
 import com.project.healthify.model.Appointment;
 import com.project.healthify.service.AppointmentService;
 import org.springframework.beans.factory.annotation.Autowired;

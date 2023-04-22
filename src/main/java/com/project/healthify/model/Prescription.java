@@ -2,7 +2,6 @@ package com.project.healthify.model;
 
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import org.hibernate.annotations.GenericGenerator;
 
@@ -26,6 +25,14 @@ public class Prescription implements Serializable {
         this.patientId = patientId;
         this.doctorId = doctorId;
         this.prescribedDate = prescribedDate;
+    }
+
+    public String getPrescriptionId() {
+        return prescriptionId;
+    }
+
+    public void setPrescriptionId(String prescriptionId) {
+        this.prescriptionId = prescriptionId;
     }
 
     public String getPatientId() {
