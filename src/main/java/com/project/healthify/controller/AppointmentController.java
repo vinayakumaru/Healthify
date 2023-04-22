@@ -28,8 +28,8 @@ public class AppointmentController {
     }
 
     @PostMapping("/add")
-    public ResponseEntity<String> addAppointment(@RequestBody JsonNode payload){
-        System.out.println(payload);
+    public ResponseEntity<String> addAppointment(@RequestBody Appointment appointment){
+        appointmentService.create(appointment);
         return ResponseEntity.ok("Appointment added successfully");
     }
 

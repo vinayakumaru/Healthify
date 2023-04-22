@@ -4,6 +4,7 @@ import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
+import org.hibernate.annotations.GenericGenerator;
 
 import java.io.Serializable;
 import java.util.Date;
@@ -11,50 +12,43 @@ import java.util.Date;
 @Entity
 public class Prescription implements Serializable {
     @Id
-    @GeneratedValue(strategy = GenerationType.SEQUENCE)
-    private String PrescriptionId;
-    private String PatientId;
-    private String DoctorId;
-    private Date PrescribedDate;
+    @GeneratedValue(generator = "uuid")
+    @GenericGenerator(name = "uuid", strategy = "org.hibernate.id.UUIDGenerator")
+    private String prescriptionId;
+    private String patientId;
+    private String doctorId;
+    private Date prescribedDate;
 
     public Prescription() {
     }
 
     public Prescription(String patientId, String doctorId, Date prescribedDate) {
-        PatientId = patientId;
-        DoctorId = doctorId;
-        PrescribedDate = prescribedDate;
-    }
-
-    public String getPrescriptionId() {
-        return PrescriptionId;
-    }
-
-    public void setPrescriptionId(String prescriptionId) {
-        PrescriptionId = prescriptionId;
+        this.patientId = patientId;
+        this.doctorId = doctorId;
+        this.prescribedDate = prescribedDate;
     }
 
     public String getPatientId() {
-        return PatientId;
+        return patientId;
     }
 
     public void setPatientId(String patientId) {
-        PatientId = patientId;
+        this.patientId = patientId;
     }
 
     public String getDoctorId() {
-        return DoctorId;
+        return doctorId;
     }
 
     public void setDoctorId(String doctorId) {
-        DoctorId = doctorId;
+        this.doctorId = doctorId;
     }
 
     public Date getPrescribedDate() {
-        return PrescribedDate;
+        return prescribedDate;
     }
 
     public void setPrescribedDate(Date prescribedDate) {
-        PrescribedDate = prescribedDate;
+        this.prescribedDate = prescribedDate;
     }
 }

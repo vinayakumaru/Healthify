@@ -4,6 +4,7 @@ import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
+import org.hibernate.annotations.GenericGenerator;
 
 import java.io.Serializable;
 
@@ -11,43 +12,46 @@ import java.io.Serializable;
 public class Appointment implements Serializable {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.SEQUENCE)
-    private String appointmentID;
-    private String userID;
-    private String doctorID;
+    @GeneratedValue(generator = "uuid")
+    @GenericGenerator(name = "uuid", strategy = "org.hibernate.id.UUIDGenerator")
+    private String appointmentId;
+    private String userId;
+    private String doctorId;
     private String status;
     private String date;
 
-    public Appointment(){}
-    public Appointment(String userID,String doctorID,String status,String date){
-        this.userID = userID;
-        this.doctorID = doctorID;
+    public Appointment() {
+    }
+
+    public Appointment(String userId, String doctorId, String status, String date) {
+        this.userId = userId;
+        this.doctorId = doctorId;
         this.status = status;
         this.date = date;
     }
 
-    public String getAppointmentID() {
-        return appointmentID;
+    public String getAppointmentId() {
+        return appointmentId;
     }
 
-    public void setAppointmentID(String appointmentID) {
-        this.appointmentID = appointmentID;
+    public void setAppointmentId(String appointmentId) {
+        this.appointmentId = appointmentId;
     }
 
-    public String getUserID() {
-        return userID;
+    public String getUserId() {
+        return userId;
     }
 
-    public void setUserID(String userID) {
-        this.userID = userID;
+    public void setUserId(String userId) {
+        this.userId = userId;
     }
 
-    public String getDoctorID() {
-        return doctorID;
+    public String getDoctorId() {
+        return doctorId;
     }
 
-    public void setDoctorID(String doctorID) {
-        this.doctorID = doctorID;
+    public void setDoctorId(String doctorId) {
+        this.doctorId = doctorId;
     }
 
     public String getStatus() {

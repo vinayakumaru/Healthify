@@ -46,6 +46,6 @@ public class AppointmentServiceImplementation implements AppointmentService {
 
     @Override
     public List<Appointment> getUserAppointment(String id) {
-        return repository.findByUserID(id);
+        return repository.findByUserId(id);
     }
 }

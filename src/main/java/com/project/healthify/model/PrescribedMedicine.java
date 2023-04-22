@@ -4,68 +4,78 @@ import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
+import org.hibernate.annotations.GenericGenerator;
 
 import java.io.Serializable;
 
 @Entity
 public class PrescribedMedicine implements Serializable {
     @Id
-    @GeneratedValue(strategy = GenerationType.SEQUENCE)
-    private String PrescribedMedicineId;
-    private String PrescriptionId;
-    private String MedicineId;
-    private int Quantity;
-    private String Dosage;
-    private String Intake;
+    @GeneratedValue(generator = "uuid")
+    @GenericGenerator(name = "uuid", strategy = "org.hibernate.id.UUIDGenerator")
+    private String prescribedMedicineId;
+    private String prescriptionId;
+    private String medicineId;
+    private int quantity;
+    private String dosage;
+    private String intake;
 
     public PrescribedMedicine() {
     }
 
     public PrescribedMedicine(String prescriptionId, String medicineId, int quantity, String dosage, String intake) {
-        PrescriptionId = prescriptionId;
-        MedicineId = medicineId;
-        Quantity = quantity;
-        Dosage = dosage;
-        Intake = intake;
+        this.prescriptionId = prescriptionId;
+        this.medicineId = medicineId;
+        this.quantity = quantity;
+        this.dosage = dosage;
+        this.intake = intake;
+    }
+
+    public String getPrescribedMedicineId() {
+        return prescribedMedicineId;
+    }
+
+    public void setPrescribedMedicineId(String prescribedMedicineId) {
+        this.prescribedMedicineId = prescribedMedicineId;
     }
 
     public String getPrescriptionId() {
-        return PrescriptionId;
+        return prescriptionId;
     }
 
     public void setPrescriptionId(String prescriptionId) {
-        PrescriptionId = prescriptionId;
+        this.prescriptionId = prescriptionId;
     }
 
     public String getMedicineId() {
-        return MedicineId;
+        return medicineId;
     }
 
     public void setMedicineId(String medicineId) {
-        MedicineId = medicineId;
+        this.medicineId = medicineId;
     }
 
     public int getQuantity() {
-        return Quantity;
+        return quantity;
     }
 
     public void setQuantity(int quantity) {
-        Quantity = quantity;
+        this.quantity = quantity;
     }
 
     public String getDosage() {
-        return Dosage;
+        return dosage;
     }
 
     public void setDosage(String dosage) {
-        Dosage = dosage;
+        this.dosage = dosage;
     }
 
     public String getIntake() {
-        return Intake;
+        return intake;
     }
 
     public void setIntake(String intake) {
-        Intake = intake;
+        this.intake = intake;
     }
 }

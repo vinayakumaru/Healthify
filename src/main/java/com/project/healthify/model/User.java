@@ -8,26 +8,26 @@ import java.io.Serializable;
 @Entity
 public class User implements Serializable {
     @Id
-    private String userID;
+    private String userId;
     private String email;
     private String phoneNumber;
     private String name;
     private Integer age;
 
     public User(){}
-    public User(String userID, String email, String phoneNumber, String name, Integer age) {
-        this.userID = userID;
+    public User(String userId, String email, String phoneNumber, String name, Integer age) {
+        this.userId = userId;
         this.email = email;
         this.phoneNumber = phoneNumber;
         this.name = name;
         this.age = age;
     }
-    public String getUserID() {
-        return userID;
+    public String getUserId() {
+        return userId;
     }
 
-    public void setUserID(String userID) {
-        this.userID = userID;
+    public void setUserId(String userId) {
+        this.userId = userId;
     }
 
     public String getEmail() {
