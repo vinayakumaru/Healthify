@@ -1,9 +1,6 @@
 package com.project.healthify.model;
 
-import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
-import jakarta.persistence.Id;
+import jakarta.persistence.*;
 import org.hibernate.annotations.GenericGenerator;
 
 import java.io.Serializable;
@@ -19,6 +16,15 @@ public class Appointment implements Serializable {
     private String doctorId;
     private String status;
     private String date;
+
+    @Transient
+    private String doctorName;
+
+    @Transient
+    private String hospitalName;
+
+    @Transient
+    private String hospitalLocation;
 
     public Appointment() {
     }
@@ -68,5 +74,29 @@ public class Appointment implements Serializable {
 
     public void setDate(String date) {
         this.date = date;
+    }
+
+    public String getDoctorName() {
+        return doctorName;
+    }
+
+    public void setDoctorName(String doctorName) {
+        this.doctorName = doctorName;
+    }
+
+    public String getHospitalName() {
+        return hospitalName;
+    }
+
+    public void setHospitalName(String hospitalName) {
+        this.hospitalName = hospitalName;
+    }
+
+    public String getHospitalLocation() {
+        return hospitalLocation;
+    }
+
+    public void setHospitalLocation(String hospitalLocation) {
+        this.hospitalLocation = hospitalLocation;
     }
 }

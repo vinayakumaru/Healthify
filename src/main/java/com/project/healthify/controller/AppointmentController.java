@@ -6,10 +6,12 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.Date;
 import java.util.List;
 
 @RestController
 @RequestMapping("/appointment")
+@CrossOrigin(origins = "*")
 public class AppointmentController {
 
     @Autowired
@@ -28,8 +30,15 @@ public class AppointmentController {
 
     @PostMapping("/add")
     public ResponseEntity<String> addAppointment(@RequestBody Appointment appointment){
+        appointment.setStatus("pending");
+        appointment.setDate(new Date().toString());
         appointmentService.create(appointment);
         return ResponseEntity.ok("Appointment added successfully");
     }
 
+    @DeleteMapping("/delete/{id}")
+    public ResponseEntity<String> deleteAppointment(@PathVariable String id){
+        appointmentService.delete(id);
+        return ResponseEntity.ok("Appointment deleted successfully");
+    }
 }

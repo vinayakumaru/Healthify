@@ -41,4 +41,9 @@ public class DoctorServiceImplementation implements DoctorService {
     public void delete(String id) {
         repository.deleteById(id);
     }
+
+    @Override
+    public List<Doctor> getByHospital(String id) {
+        return repository.findByHospitalId(id);
+    }
 }
