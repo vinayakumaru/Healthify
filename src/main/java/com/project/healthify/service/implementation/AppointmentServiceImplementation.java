@@ -45,9 +45,12 @@ public class AppointmentServiceImplementation implements AppointmentService {
         List<Object[]> objects = repository.findByDoctorId(id);
         List<Appointment> appointments = new ArrayList<>();
         for(Object[] object:objects){
-            Appointment appointment = (Appointment) object[0];
-            appointment.setUserName((String) object[1]);
-            appointment.setUserAge((Integer) object[2]);
+            Appointment appointment =
+                    new Appointment.Builder((Appointment) object[0])
+                    .userName((String) object[1])
+                    .userAge((Integer) object[2])
+                    .build();
+
             appointments.add(appointment);
         }
         return appointments;
@@ -58,10 +61,12 @@ public class AppointmentServiceImplementation implements AppointmentService {
         List<Object[]> objects = repository.findByUserId(id);
         List<Appointment> appointments = new ArrayList<>();
         for(Object[] object:objects){
-            Appointment appointment = (Appointment) object[0];
-            appointment.setDoctorName((String) object[1]);
-            appointment.setHospitalName((String) object[2]);
-            appointment.setHospitalLocation((String) object[3]);
+            Appointment appointment =
+                    new Appointment.Builder((Appointment) object[0])
+                            .doctorName((String) object[1])
+                            .hospitalName((String) object[2])
+                            .hospitalLocation((String) object[3])
+                            .build();
             appointments.add(appointment);
         }
         return appointments;
