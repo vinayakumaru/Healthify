@@ -10,7 +10,7 @@ public interface RepositoryService<T> extends Service {
 
     Optional<T> get(String id);
 
-    void create(T entity);
+    T create(T entity);
 
     void save(T entity);
 

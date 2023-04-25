@@ -26,6 +26,12 @@ public class Appointment implements Serializable {
     @Transient
     private String hospitalLocation;
 
+    @Transient
+    private String userName;
+
+    @Transient
+    private Integer userAge;
+
     public Appointment() {
     }
 
@@ -99,4 +105,22 @@ public class Appointment implements Serializable {
     public void setHospitalLocation(String hospitalLocation) {
         this.hospitalLocation = hospitalLocation;
     }
+
+    public String getUserName() {
+        return userName;
+    }
+
+    public void setUserName(String userName) {
+        this.userName = userName;
+    }
+
+    public Integer getUserAge() {
+        return userAge;
+    }
+
+    public void setUserAge(Integer userAge) {
+        this.userAge = userAge;
+    }
+
+
 }

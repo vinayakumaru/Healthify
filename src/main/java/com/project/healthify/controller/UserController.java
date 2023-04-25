@@ -19,7 +19,7 @@ public class UserController {
     @PostMapping("/add")
     public ResponseEntity<String> createUser(@RequestBody User user) {
         try {
-            userService.save(user);
+            userService.create(user);
             return ResponseEntity.ok("User created successfully");
         } catch (Exception e) {
             return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body("Error creating user: " + e.getMessage());

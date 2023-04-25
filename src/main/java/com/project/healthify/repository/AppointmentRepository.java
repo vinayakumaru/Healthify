@@ -10,7 +10,7 @@ import java.util.List;
 
 @Repository
 public interface AppointmentRepository extends JpaRepository<Appointment, String> {
-    @Query("SELECT a, d.doctorName, h.name, h.location FROM Appointment a JOIN Doctor d ON a.doctorId = d.doctorId JOIN Hospital h ON d.hospitalId = h.hospitalId WHERE a.doctorId = :doctorId")
+    @Query("SELECT a, u.name, u.age FROM Appointment a JOIN User u ON a.userId = u.userId WHERE a.doctorId = :doctorId")
     List<Object[]> findByDoctorId(@Param("doctorId") String doctorId);
 
     @Query("SELECT a, d.doctorName, h.name, h.location FROM Appointment a JOIN Doctor d ON a.doctorId = d.doctorId JOIN Hospital h ON d.hospitalId = h.hospitalId WHERE a.userId = :userId")

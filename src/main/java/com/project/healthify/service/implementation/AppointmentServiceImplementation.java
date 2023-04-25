@@ -26,8 +26,8 @@ public class AppointmentServiceImplementation implements AppointmentService {
     }
 
     @Override
-    public void create(Appointment entity) {
-        repository.save(entity);
+    public Appointment create(Appointment entity) {
+        return  repository.save(entity);
     }
 
     @Override
@@ -42,19 +42,20 @@ public class AppointmentServiceImplementation implements AppointmentService {
 
     @Override
     public List<Appointment> getDoctorAppointment(String id) {
-
         List<Object[]> objects = repository.findByDoctorId(id);
-        return getAppointments(objects);
-
+        List<Appointment> appointments = new ArrayList<>();
+        for(Object[] object:objects){
+            Appointment appointment = (Appointment) object[0];
+            appointment.setUserName((String) object[1]);
+            appointment.setUserAge((Integer) object[2]);
+            appointments.add(appointment);
+        }
+        return appointments;
     }
 
     @Override
     public List<Appointment> getUserAppointment(String id) {
         List<Object[]> objects = repository.findByUserId(id);
-        return getAppointments(objects);
-    }
-
-    private List<Appointment> getAppointments(List<Object[]> objects) {
         List<Appointment> appointments = new ArrayList<>();
         for(Object[] object:objects){
             Appointment appointment = (Appointment) object[0];

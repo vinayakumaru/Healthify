@@ -3,10 +3,11 @@ package com.project.healthify.model;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.Id;
+import jakarta.persistence.Transient;
 import org.hibernate.annotations.GenericGenerator;
 
 import java.io.Serializable;
-import java.util.Date;
+import java.util.List;
 
 @Entity
 public class Prescription implements Serializable {
@@ -14,17 +15,18 @@ public class Prescription implements Serializable {
     @GeneratedValue(generator = "uuid")
     @GenericGenerator(name = "uuid", strategy = "org.hibernate.id.UUIDGenerator")
     private String prescriptionId;
-    private String patientId;
-    private String doctorId;
-    private Date prescribedDate;
+    private String appointmentId;
+    private String description;
+
+    @Transient
+    private List<PrescribedMedicine> prescribedMedicines;
 
     public Prescription() {
     }
 
-    public Prescription(String patientId, String doctorId, Date prescribedDate) {
-        this.patientId = patientId;
-        this.doctorId = doctorId;
-        this.prescribedDate = prescribedDate;
+    public Prescription(String appointmentId, String description) {
+        this.appointmentId = appointmentId;
+        this.description = description;
     }
 
     public String getPrescriptionId() {
@@ -35,27 +37,37 @@ public class Prescription implements Serializable {
         this.prescriptionId = prescriptionId;
     }
 
-    public String getPatientId() {
-        return patientId;
+    public List<PrescribedMedicine> getPrescribedMedicines() {
+        return prescribedMedicines;
     }
 
-    public void setPatientId(String patientId) {
-        this.patientId = patientId;
+    public void setPrescribedMedicines(List<PrescribedMedicine> prescribedMedicines) {
+        this.prescribedMedicines = prescribedMedicines;
     }
 
-    public String getDoctorId() {
-        return doctorId;
+    public String getDescription() {
+        return description;
     }
 
-    public void setDoctorId(String doctorId) {
-        this.doctorId = doctorId;
+    public void setDescription(String description) {
+        this.description = description;
     }
 
-    public Date getPrescribedDate() {
-        return prescribedDate;
+    public String getAppointmentId() {
+        return appointmentId;
     }
 
-    public void setPrescribedDate(Date prescribedDate) {
-        this.prescribedDate = prescribedDate;
+    public void setAppointmentId(String appointmentId) {
+        this.appointmentId = appointmentId;
+    }
+
+    @Override
+    public String toString() {
+        return "Prescription{" +
+                "prescriptionId='" + prescriptionId + '\'' +
+                ", appointmentId='" + appointmentId + '\'' +
+                ", description='" + description + '\'' +
+                ", prescribedMedicines=" + prescribedMedicines +
+                '}';
     }
 }

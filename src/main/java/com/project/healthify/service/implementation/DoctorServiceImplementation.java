@@ -28,8 +28,9 @@ public class DoctorServiceImplementation implements DoctorService {
     }
 
     @Override
-    public void create(Doctor entity) {
-        repository.save(entity);
+    public Doctor create(Doctor entity) {
+
+        return repository.save(entity);
     }
 
     @Override

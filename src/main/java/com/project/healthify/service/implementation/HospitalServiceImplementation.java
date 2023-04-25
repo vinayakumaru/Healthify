@@ -25,8 +25,9 @@ public class HospitalServiceImplementation implements HospitalService {
     }
 
     @Override
-    public void create(Hospital entity) {
-        repository.save(entity);
+    public Hospital create(Hospital entity) {
+
+        return repository.save(entity);
     }
 
     @Override

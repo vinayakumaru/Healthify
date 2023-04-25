@@ -26,8 +26,8 @@ public class PrescribedMedicineServiceImplementation implements PrescribedMedici
     }
 
     @Override
-    public void create(PrescribedMedicine entity) {
-        repository.save(entity);
+    public PrescribedMedicine create(PrescribedMedicine entity) {
+        return repository.save(entity);
     }
 
     @Override
@@ -38,5 +38,10 @@ public class PrescribedMedicineServiceImplementation implements PrescribedMedici
     @Override
     public void delete(String id) {
         repository.deleteById(id);
+    }
+
+    @Override
+    public List<PrescribedMedicine> getByPrescription(String id) {
+        return repository.findByPrescriptionId(id);
     }
 }

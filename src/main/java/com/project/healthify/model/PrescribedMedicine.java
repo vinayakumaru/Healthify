@@ -2,7 +2,6 @@ package com.project.healthify.model;
 
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import org.hibernate.annotations.GenericGenerator;
 
@@ -16,18 +15,17 @@ public class PrescribedMedicine implements Serializable {
     private String prescribedMedicineId;
     private String prescriptionId;
     private String medicineId;
-    private int quantity;
-    private String dosage;
+
+    private String medicineName;
     private String intake;
 
     public PrescribedMedicine() {
     }
 
-    public PrescribedMedicine(String prescriptionId, String medicineId, int quantity, String dosage, String intake) {
+    public PrescribedMedicine(String prescriptionId, String medicineId, String medicineName, String intake) {
         this.prescriptionId = prescriptionId;
         this.medicineId = medicineId;
-        this.quantity = quantity;
-        this.dosage = dosage;
+        this.medicineName = medicineName;
         this.intake = intake;
     }
 
@@ -55,27 +53,30 @@ public class PrescribedMedicine implements Serializable {
         this.medicineId = medicineId;
     }
 
-    public int getQuantity() {
-        return quantity;
-    }
-
-    public void setQuantity(int quantity) {
-        this.quantity = quantity;
-    }
-
-    public String getDosage() {
-        return dosage;
-    }
-
-    public void setDosage(String dosage) {
-        this.dosage = dosage;
-    }
-
     public String getIntake() {
         return intake;
     }
 
     public void setIntake(String intake) {
         this.intake = intake;
+    }
+
+    public String getMedicineName() {
+        return medicineName;
+    }
+
+    public void setMedicineName(String medicineName) {
+        this.medicineName = medicineName;
+    }
+
+    @Override
+    public String toString() {
+        return "PrescribedMedicine{" +
+                "prescribedMedicineId='" + prescribedMedicineId + '\'' +
+                ", prescriptionId='" + prescriptionId + '\'' +
+                ", medicineId='" + medicineId + '\'' +
+                ", medicineName='" + medicineName + '\'' +
+                ", intake='" + intake + '\'' +
+                '}';
     }
 }

@@ -25,8 +25,8 @@ public class MedicineServiceImplementation implements MedicineService {
     }
 
     @Override
-    public void create(Medicine entity) {
-        repository.save(entity);
+    public Medicine create(Medicine entity) {
+        return repository.save(entity);
     }
 
     @Override
